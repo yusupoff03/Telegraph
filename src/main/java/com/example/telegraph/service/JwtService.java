@@ -2,18 +2,19 @@ package com.example.telegraph.service;
 
 
 import com.example.telegraph.entity.user.UserEntity;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import static org.apache.catalina.realm.UserDatabaseRealm.getRoles;
-
+@Service
 public class JwtService {
     @Value("${jwt.secret.key}")
     private String secretKey;
@@ -28,6 +29,9 @@ public class JwtService {
             setExpiration(new Date(new Date().getTime()+accessTokenExpiry)).
             addClaims(Map.of("roles",getRoles(user.getAuthorities()))).
             compact();
+    }
+    public Jws<Claims> extractToken(String token){
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
     }
     private List<String> getRoles(Collection<? extends GrantedAuthority> roles){
     return roles.stream().
