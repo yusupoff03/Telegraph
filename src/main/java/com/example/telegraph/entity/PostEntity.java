@@ -1,5 +1,6 @@
 package com.example.telegraph.entity;
 
+import com.example.telegraph.entity.user.UserEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

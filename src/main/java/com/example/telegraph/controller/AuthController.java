@@ -1,9 +1,8 @@
 package com.example.telegraph.controller;
 
 import com.example.telegraph.dto.UserDto;
-import com.example.telegraph.entity.UserEntity;
+import com.example.telegraph.entity.user.UserEntity;
 import com.example.telegraph.exception.AuthenticationFailedException;
-import com.example.telegraph.exception.ConflictException;
 import com.example.telegraph.exception.RequestValidationException;
 import com.example.telegraph.service.user.UserService;
 import jakarta.validation.Valid;

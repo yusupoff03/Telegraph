@@ -1,7 +1,7 @@
 package com.example.telegraph.service.user;
 
 import com.example.telegraph.dto.UserDto;
-import com.example.telegraph.entity.UserEntity;
+import com.example.telegraph.entity.user.UserEntity;
 import com.example.telegraph.exception.ConflictException;
 import com.example.telegraph.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
