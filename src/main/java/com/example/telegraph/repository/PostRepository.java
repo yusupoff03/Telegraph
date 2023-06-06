@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, UUID> {
-  List<PostEntity>findPostEntitiesByOwnerId(UUID ownerId);
+  List<PostEntity>findPostEntitiesByOwnerId(UUID ownerId,Pageable pageable);
   List<PostEntity> findPostEntitiesByTitleContainingIgnoreCaseOrderByTitleAsc(Pageable pageable, String title);
   List<PostEntity> findPostEntityByLinkContains(String link);
 }

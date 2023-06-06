@@ -26,8 +26,9 @@ public class PostServiceImpl implements PostService {
     private final UserRepository userRepository;
 
     @Override
-    public ResponseEntity<List<PostEntity>> userPosts(UUID ownerId) {
-        List<PostEntity> posts=postRepository.findPostEntitiesByOwnerId(ownerId);
+    public ResponseEntity<List<PostEntity>> userPosts(UUID ownerId,int page,int size) {
+        Pageable pageable=PageRequest.of(page,size);
+        List<PostEntity> posts=postRepository.findPostEntitiesByOwnerId(ownerId,pageable);
         if(posts.isEmpty()){
             throw new DataNotFoundException("Not found");
         }

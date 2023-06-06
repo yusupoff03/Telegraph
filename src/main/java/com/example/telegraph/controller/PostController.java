@@ -19,9 +19,11 @@ public class PostController {
 
     @GetMapping(value = "/my-posts/{userId}")
     public ResponseEntity<List<PostEntity>> myPosts(
-            @PathVariable UUID userId
+            @PathVariable UUID userId,
+            @RequestParam int page,
+            @RequestParam int size
     ) {
-      return postService.userPosts(userId);
+      return postService.userPosts(userId,page,size);
     }
 
     @PostMapping(value = "/add-post/{userId}")
@@ -32,8 +34,10 @@ public class PostController {
     }
     @GetMapping(value = "/search")
     public ResponseEntity<List<PostEntity>> search(
-            @RequestParam String title
+            @RequestParam String title,
+            @RequestParam int page,
+            @RequestParam int size
     ){
-      return postService.searchByTitle(title);
+      return postService.searchByTitle(title,page,size);
     }
 }
